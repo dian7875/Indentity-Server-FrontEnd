@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { credencial } from "../Types/Type";
 import { useState } from "react";
 import { IoEyeOffSharp, IoEyeSharp } from "react-icons/io5";
-import RecoverPasswordModal from "./RecoverPasswordModal";
+import RecoverPasswordModal from "./ForgetPasswordModal";
 
 const Login = () => {
   const { mutate: logIn } = UseLogin();

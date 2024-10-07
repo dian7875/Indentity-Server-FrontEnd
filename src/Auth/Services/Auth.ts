@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 import api from "./ApiConfig";
-import { credencial, ErrorResponse } from "../Types/Type";
+import { credencial, ErrorResponse, RecoveryForm } from "../Types/Type";
 
 // Servicio de Login
 const LogIn = async (data: credencial) => {
@@ -23,4 +23,26 @@ const LogIn = async (data: credencial) => {
   }
 };
 
-export { LogIn };
+const forgetPassword = async (data: RecoveryForm) => {
+  try {
+    console.table(data);
+    const response = await api.post("auth/send-password-reset", data,{
+        timeout: 10000,
+    });
+    return response.status;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError<ErrorResponse>;
+      if (axiosError.response) {
+        console.error("Error:", axiosError.response.data.message);
+      } else {
+        console.error("Error:", axiosError.message);
+      }
+    } else {
+      console.error("Error desconocido:", error);
+    }
+    throw error;
+  }
+};
+
+export { LogIn, forgetPassword };

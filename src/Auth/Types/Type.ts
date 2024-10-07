@@ -27,3 +27,8 @@ export interface credencial {
   username:string;
   password:string
 }
+export interface RecoveryForm {
+  email:string;
+  cedula:string
+}
+
