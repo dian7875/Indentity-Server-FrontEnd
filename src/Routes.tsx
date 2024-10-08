@@ -1,11 +1,24 @@
-import { Outlet } from "react-router";
+import { createBrowserRouter, Outlet } from "react-router-dom";
+import Login from "./Auth/Components/Login";
+import Register from "./Auth/Components/Register";
 import Layout from "./UserManage/Layout/Layout";
 import ManageUsers from "./UserManage/Screens/ManageUsers";
-import { createBrowserRouter } from "react-router-dom";
 
 const Routes = createBrowserRouter([
   {
-    path: "",
+    index: true,
+    element: <Login />,
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "register",
+    element: <Register />,
+  },
+  {
+    path: "Dashboard",
     element: (
       <Layout>
         <Outlet />
