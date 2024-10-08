@@ -8,6 +8,10 @@ export type User = {
   address: string;
   lastName: string;
   lastName2: string;
+  birthDate: Date;
+  password: string;
+  repeatPassword:string
+  termsAndCondicions: boolean;
 };
 
 // interfaz para respuestas del servidor
@@ -24,11 +28,10 @@ export type ApiError = {
 };
 
 export interface credencial {
-  username:string;
-  password:string
+  username: string;
+  password: string;
 }
 export interface RecoveryForm {
-  email:string;
-  cedula:string
+  email: string;
+  cedula: string;
 }
-
