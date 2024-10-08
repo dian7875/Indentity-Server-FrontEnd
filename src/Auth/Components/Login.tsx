@@ -69,16 +69,15 @@ const Login = () => {
               </button>
             </div>
 
+            <div className="flex justify-between items-center mt-4">
+              <p className="hover:text-cyan-500 cursor-pointer" onClick={() => setOpen(true)}>
+                ¿Olvidó su contraseña?
+              </p>
+            </div>
+
             <Button type="submit" gradientMonochrome="info" fullSized>
               Iniciar Sesión
             </Button>
-
-            <div className="flex justify-between items-center mt-4">
-              <Button color="light">Regresar</Button>
-              <Button color="light" onClick={() => setOpen(true)}>
-                ¿Olvidó su contraseña?
-              </Button>
-            </div>
           </form>
         </Card>
       </div>

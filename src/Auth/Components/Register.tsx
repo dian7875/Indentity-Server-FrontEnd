@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { IoEyeOffSharp, IoEyeSharp } from "react-icons/io5";
 import { IoAlert } from "react-icons/io5";
 import UseRegister from "../Hooks/UseRegister";
+import { useNavigate } from "react-router";
 
 const Register = () => {
   const { register, watch, handleSubmit, reset } = useForm<User>();
@@ -58,8 +59,10 @@ const Register = () => {
     });
   };
 
+  const navi = useNavigate();
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-800 p-8">
+    <div className="flex justify-center items-center min-h-screen bg-gray-900 p-8">
       <Card className="max-w-screen-sm w-full">
         <div>
           <h2 className="text-2xl font-bold mb-4 text-black">
@@ -218,7 +221,12 @@ const Register = () => {
               </div>
             </fieldset>
             <div className="flex justify-between mt-5">
-              <Button tabIndex={2} type="button" color="failure">
+              <Button
+                tabIndex={2}
+                type="button"
+                color="failure"
+                onClick={() => navi("/login")}
+              >
                 Cancelar
               </Button>
               <Button type="submit" color="blue" disabled={fail || formatFail}>
