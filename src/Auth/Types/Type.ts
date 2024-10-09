@@ -6,11 +6,11 @@ export type User = {
   email: string;
   phone: string;
   address: string;
-  lastName: string;
+  lastName1: string;
   lastName2: string;
   birthDate: Date;
   password: string;
-  repeatPassword:string
+  repeatPassword: string;
   termsAndCondicions: boolean;
 };
 
@@ -28,7 +28,7 @@ export type ApiError = {
 };
 
 export interface credencial {
-  username: string;
+  cedula: string;
   password: string;
 }
 export interface RecoveryForm {

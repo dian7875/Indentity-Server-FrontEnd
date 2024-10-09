@@ -5,15 +5,22 @@ import { credencial } from "../Types/Type";
 import { useState } from "react";
 import { IoEyeOffSharp, IoEyeSharp } from "react-icons/io5";
 import RecoverPasswordModal from "./ForgetPasswordModal";
+import { useLocation } from "react-router";
 
 const Login = () => {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const redirectUrl = params.get("redirect") || "http://localhost:5173";
+
   const { mutate: logIn } = UseLogin();
 
   const { register, handleSubmit } = useForm<credencial>();
 
   const onSubmit = async (data: credencial) => {
     logIn(data, {
-      onSuccess: () => {},
+      onSuccess: () => {
+        window.location.href = redirectUrl;
+      },
       onError: () => {},
     });
   };
@@ -42,10 +49,10 @@ const Login = () => {
             <div>
               <FloatingLabel
                 variant="outlined"
-                label="Correo"
-                type="email"
+                label="Cedula"
+                type="number"
                 required
-                {...register("username")}
+                {...register("cedula")}
               />
             </div>
 
@@ -70,7 +77,10 @@ const Login = () => {
             </div>
 
             <div className="flex justify-between items-center mt-4">
-              <p className="hover:text-cyan-500 cursor-pointer" onClick={() => setOpen(true)}>
+              <p
+                className="hover:text-cyan-500 cursor-pointer"
+                onClick={() => setOpen(true)}
+              >
                 ¿Olvidó su contraseña?
               </p>
             </div>

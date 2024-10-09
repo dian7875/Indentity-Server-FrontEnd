@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3000",
-  timeout: 1000,
+  baseURL: "https://localhost:7222/api/Auth/",
+  timeout: 10000,
   headers: {
-    Authorization: `Bearer`,
     "Content-Type": "application/json",
   },
+  withCredentials: true, 
 });
 
 export default api;

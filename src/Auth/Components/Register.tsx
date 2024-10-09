@@ -98,7 +98,7 @@ const Register = () => {
                   required
                   variant="outlined"
                   label="Apellido"
-                  {...register("lastName")}
+                  {...register("lastName1")}
                 />
               </div>
               <div>
