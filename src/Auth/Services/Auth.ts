@@ -6,7 +6,7 @@ import { credencial, ErrorResponse, RecoveryForm, User } from "../Types/Type";
 const LogIn = async (data: credencial) => {
   try {
     console.table(data);
-    const response = await api.post("login", data);
+    const response = await api.post("Auth/login", data);
     return response.status;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -46,7 +46,7 @@ const forgetPassword = async (data: RecoveryForm) => {
 
 const register = async (data: User) => {
   try {
-    const response = await api.post("register", data);
+    const response = await api.post("Auth/register", data);
     return response.status;
   } catch (error) {
     if (axios.isAxiosError(error)) {

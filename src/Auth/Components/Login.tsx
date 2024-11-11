@@ -5,24 +5,14 @@ import { credencial } from "../Types/Type";
 import { useState } from "react";
 import { IoEyeOffSharp, IoEyeSharp } from "react-icons/io5";
 import RecoverPasswordModal from "./ForgetPasswordModal";
-import { useLocation } from "react-router";
 
 const Login = () => {
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const redirectUrl = params.get("redirect") || "http://localhost:5173";
-
   const { mutate: logIn } = UseLogin();
 
   const { register, handleSubmit } = useForm<credencial>();
 
   const onSubmit = async (data: credencial) => {
-    logIn(data, {
-      onSuccess: () => {
-        window.location.href = redirectUrl;
-      },
-      onError: () => {},
-    });
+    logIn(data);
   };
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -50,7 +40,6 @@ const Login = () => {
               <FloatingLabel
                 variant="outlined"
                 label="Cedula"
-                type="number"
                 required
                 {...register("cedula")}
               />
