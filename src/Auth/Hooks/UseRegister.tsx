@@ -11,7 +11,7 @@ const UseRegister = () => {
     mutationFn: (data: User) =>
       toast.promise(register(data), {
         loading: "Registrando...",
-        success: <span>Registro existoso.</span>,
+        success: <span>Registro exitoso.</span>,
         error: (error: ApiError) => (
           <span>Error al registrarse: {error.message}</span>
         ),
