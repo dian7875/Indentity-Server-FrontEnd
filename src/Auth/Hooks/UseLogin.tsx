@@ -5,12 +5,12 @@ import { LogIn } from "../Services/Auth";
 import { useLocation } from "react-router";
 
 const UseLogin = () => {
-  const baseURL = import.meta.env.VITE_SECONDARY_URL
+  const secondaryURL = import.meta.env.VITE_SECONDARY_URL
 
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const redirectUrl =
-    params.get("redirect") || "";
+    params.get("redirect") || secondaryURL;
   return useMutation({
     mutationFn: (data: credencial) =>
       toast.promise(LogIn(data), {
