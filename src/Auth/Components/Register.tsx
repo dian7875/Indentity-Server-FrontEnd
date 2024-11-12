@@ -70,7 +70,10 @@ const Register = () => {
           </h2>
           <p className="text-sm mb-4">
             ¿Posees una cuenta?{" "}
-            <a href="/login" className="text-blue-500 hover:underline">
+            <a
+              onClick={() => navi(-1)}
+              className="text-blue-500 hover:underline"
+            >
               Inicia Sesión aquí.
             </a>
           </p>
@@ -225,7 +228,7 @@ const Register = () => {
                 tabIndex={2}
                 type="button"
                 color="failure"
-                onClick={() => navi("/login")}
+                onClick={() => navi(-1)}
               >
                 Cancelar
               </Button>

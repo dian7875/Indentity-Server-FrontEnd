@@ -6,7 +6,6 @@ import { useNavigate } from "react-router";
 
 const UseRegister = () => {
   const navi = useNavigate();
-
   return useMutation({
     mutationFn: (data: User) =>
       toast.promise(register(data), {
@@ -17,7 +16,7 @@ const UseRegister = () => {
         ),
       }),
     onSuccess() {
-      navi("/");
+      navi(-1);
     },
   });
 };
