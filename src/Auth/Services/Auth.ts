@@ -7,7 +7,7 @@ const LogIn = async (data: credencial) => {
   try {
     console.table(data);
     const response = await api.post("Auth/login", data);
-    localStorage.setItem("Token", response.data.Token);
+    localStorage.setItem("Token", response.data.token);
     return response.status;
   } catch (error) {
     if (axios.isAxiosError(error)) {
