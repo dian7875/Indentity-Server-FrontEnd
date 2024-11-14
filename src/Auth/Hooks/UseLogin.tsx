@@ -19,15 +19,9 @@ const UseLogin = () => {
           <span>Error al iniciar sesión: {error.message}</span>
         ),
       }),
-    onSuccess() {
-      
+    onSuccess() {   
       const token = localStorage.getItem("Token");
       const redirectWithToken = `${redirectUrl}?token=${token}`;
-      
-      const targetWindow = window.open(redirectUrl); 
-      if(targetWindow){
-        targetWindow.postMessage(token, redirectUrl);
-      }
       window.location.href = redirectWithToken;
     },
   });
