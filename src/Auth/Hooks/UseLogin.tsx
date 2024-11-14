@@ -5,12 +5,11 @@ import { LogIn } from "../Services/Auth";
 import { useLocation } from "react-router";
 
 const UseLogin = () => {
-  const secondaryURL = import.meta.env.VITE_SECONDARY_URL
+  const secondaryURL = import.meta.env.VITE_SECONDARY_URL;
 
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const redirectUrl =
-    params.get("redirect") || secondaryURL;
+  const redirectUrl = params.get("redirect") || secondaryURL;
   return useMutation({
     mutationFn: (data: credencial) =>
       toast.promise(LogIn(data), {
@@ -21,7 +20,15 @@ const UseLogin = () => {
         ),
       }),
     onSuccess() {
-      window.location.href = redirectUrl;
+      
+      const token = localStorage.getItem("Token");
+      const redirectWithToken = `${redirectUrl}?token=${token}`;
+      
+      const targetWindow = window.open(redirectUrl); 
+      if(targetWindow){
+        targetWindow.postMessage(token, redirectUrl);
+      }
+      window.location.href = redirectWithToken;
     },
   });
 };
